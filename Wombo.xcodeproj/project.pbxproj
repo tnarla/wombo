@@ -8,24 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		61A55C541DFE6F8700D06D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A55C531DFE6F8700D06D6C /* AppDelegate.swift */; };
-		61A55C561DFE6F8700D06D6C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 61A55C551DFE6F8700D06D6C /* GameScene.sks */; };
 		61A55C581DFE6F8700D06D6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A55C571DFE6F8700D06D6C /* GameScene.swift */; };
 		61A55C5A1DFE6F8700D06D6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A55C591DFE6F8700D06D6C /* GameViewController.swift */; };
 		61A55C5D1DFE6F8700D06D6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61A55C5B1DFE6F8700D06D6C /* Main.storyboard */; };
 		61A55C5F1DFE6F8800D06D6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61A55C5E1DFE6F8800D06D6C /* Assets.xcassets */; };
 		61A55C621DFE6F8800D06D6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61A55C601DFE6F8800D06D6C /* LaunchScreen.storyboard */; };
+		61E722CC1DFE738F0019913B /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 61E722CB1DFE738F0019913B /* Sprites.atlas */; };
+		61E722D01DFE750B0019913B /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E722CF1DFE750B0019913B /* Letter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		61A55C501DFE6F8700D06D6C /* Wombo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wombo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A55C531DFE6F8700D06D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		61A55C551DFE6F8700D06D6C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		61A55C571DFE6F8700D06D6C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		61A55C591DFE6F8700D06D6C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		61A55C5C1DFE6F8700D06D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61A55C5E1DFE6F8800D06D6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61A55C611DFE6F8800D06D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61A55C631DFE6F8800D06D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61E722CB1DFE738F0019913B /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		61E722CF1DFE750B0019913B /* Letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Letter.swift; path = ../Letter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +60,15 @@
 		61A55C521DFE6F8700D06D6C /* Wombo */ = {
 			isa = PBXGroup;
 			children = (
+				61E722CF1DFE750B0019913B /* Letter.swift */,
 				61A55C531DFE6F8700D06D6C /* AppDelegate.swift */,
-				61A55C551DFE6F8700D06D6C /* GameScene.sks */,
 				61A55C571DFE6F8700D06D6C /* GameScene.swift */,
 				61A55C591DFE6F8700D06D6C /* GameViewController.swift */,
 				61A55C5B1DFE6F8700D06D6C /* Main.storyboard */,
 				61A55C5E1DFE6F8800D06D6C /* Assets.xcassets */,
 				61A55C601DFE6F8800D06D6C /* LaunchScreen.storyboard */,
 				61A55C631DFE6F8800D06D6C /* Info.plist */,
+				61E722CB1DFE738F0019913B /* Sprites.atlas */,
 			);
 			path = Wombo;
 			sourceTree = "<group>";
@@ -102,6 +105,7 @@
 				TargetAttributes = {
 					61A55C4F1DFE6F8700D06D6C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = HDEBG8N7Q8;
 					};
 				};
 			};
@@ -128,10 +132,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61A55C561DFE6F8700D06D6C /* GameScene.sks in Resources */,
 				61A55C621DFE6F8800D06D6C /* LaunchScreen.storyboard in Resources */,
 				61A55C5F1DFE6F8800D06D6C /* Assets.xcassets in Resources */,
 				61A55C5D1DFE6F8700D06D6C /* Main.storyboard in Resources */,
+				61E722CC1DFE738F0019913B /* Sprites.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +149,7 @@
 				61A55C581DFE6F8700D06D6C /* GameScene.swift in Sources */,
 				61A55C5A1DFE6F8700D06D6C /* GameViewController.swift in Sources */,
 				61A55C541DFE6F8700D06D6C /* AppDelegate.swift in Sources */,
+				61E722D01DFE750B0019913B /* Letter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,10 +262,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Wombo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Trushitha-Narla.Wombo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -268,10 +276,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Wombo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Trushitha-Narla.Wombo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -294,6 +305,7 @@
 				61A55C681DFE6F8800D06D6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
