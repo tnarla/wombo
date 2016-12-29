@@ -40,7 +40,11 @@ enum LetterType: Int, CustomStringConvertible {
     }
 }
 
-class Letter: CustomStringConvertible {
+func ==(lhs: Letter, rhs: Letter) -> Bool {
+    return lhs.column == rhs.column && lhs.row == rhs.row
+}
+
+class Letter: CustomStringConvertible, Hashable {
     var column: Int
     var row: Int
     let letter: LetterType
@@ -54,5 +58,9 @@ class Letter: CustomStringConvertible {
     
     var description: String {
         return "type:\(letter) square:(\(column),\(row))"
+    }
+    
+    var hashValue: Int {
+        return row*10 + column
     }
 }
