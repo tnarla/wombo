@@ -112,6 +112,7 @@
 					61A55C4F1DFE6F8700D06D6C = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = HDEBG8N7Q8;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -277,6 +278,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Trushitha-Narla.Wombo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -291,6 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Trushitha-Narla.Wombo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

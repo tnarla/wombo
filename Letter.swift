@@ -47,17 +47,17 @@ func ==(lhs: Letter, rhs: Letter) -> Bool {
 class Letter: CustomStringConvertible, Hashable {
     var column: Int
     var row: Int
-    let letter: LetterType
+    let letterType: LetterType
     var sprite: SKSpriteNode?
     
-    init(column: Int, row: Int, letter: LetterType) {
+    init(column: Int, row: Int, letterType: LetterType) {
         self.column = column
         self.row = row
-        self.letter = letter
+        self.letterType = letterType
     }
     
     var description: String {
-        return "type:\(letter) square:(\(column),\(row))"
+        return "type:\(letterType) square:(\(column),\(row))"
     }
     
     var hashValue: Int {

@@ -14,7 +14,7 @@ let NumRows = 9
 class Level {
     var letters = Array2D<Letter>(columns: NumColumns, rows: NumRows)
     
-    func letterAt(column: Int, row: Int) -> Letter? {
+    func letterAt(_ column: Int, row: Int) -> Letter? {
         assert(column >= 0 && column < NumColumns)
         assert(row >= 0 && row < NumRows)
         return letters[column, row]
@@ -24,7 +24,7 @@ class Level {
         return createInitialLetters()
     }
     
-    private func createInitialLetters() -> Set<Letter> {
+    fileprivate func createInitialLetters() -> Set<Letter> {
         var set = Set<Letter>()
         
         // 1
@@ -35,7 +35,7 @@ class Level {
                 let letterType = LetterType.random()
                 
                 // 3
-                let letter = Letter(column: column, row: row, letter: letterType)
+                let letter = Letter(column: column, row: row, letterType: letterType)
                 letters[column, row] = letter
                 
                 // 4

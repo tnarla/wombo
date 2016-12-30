@@ -18,8 +18,9 @@ class GameScene: SKScene {
     
     let gameLayer = SKNode()
     let lettersLayer = SKNode()
+    let tilesLayer = SKNode()
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         self.backgroundColor = backgroundColorCustom
     }
     
@@ -30,18 +31,50 @@ class GameScene: SKScene {
     
     override init(size: CGSize) {
         super.init(size: size)
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
         addChild(gameLayer)
         
         let layerPosition = CGPoint(
             x: -TileWidth * CGFloat(NumColumns) / 2,
             y: -TileHeight * CGFloat(NumRows) / 2)
         
+//        tilesLayer.position = layerPosition
+//        tilesLayer.zPosition = -5
+//        gameLayer.addChild(tilesLayer)
         lettersLayer.position = layerPosition
         gameLayer.addChild(lettersLayer)
     }
     
+    func addSprites(for letters: Set<Letter>) {
+        for letter in letters {
+            let sprite = SKSpriteNode(imageNamed: letter.letterType.spriteName)
+            sprite.size = CGSize(width: TileWidth, height: TileHeight)
+            sprite.position = pointFor(column: letter.column, row: letter.row)
+            lettersLayer.addChild(sprite)
+            letter.sprite = sprite
+        }
+    }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    func pointFor(column: Int, row: Int) -> CGPoint {
+        return CGPoint(
+            x: CGFloat(column)*TileWidth + TileWidth/2,
+            y: CGFloat(row)*TileHeight + TileHeight/2)
+    }
+    
+    func addTiles() {
+        for row in 0..<NumRows {
+            for column in 0..<NumColumns {
+                let tileNode = SKSpriteNode(imageNamed: "Tile")
+                tileNode.size = CGSize(width: TileWidth, height: TileHeight)
+                tileNode.position = pointFor(column: column, row: row)
+                tilesLayer.addChild(tileNode)
+            }
+        }
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        /* Called when a touch begins */
         
 //        for touch in touches {
@@ -49,7 +82,7 @@ class GameScene: SKScene {
 //        }
     }
    
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
     }
 }
