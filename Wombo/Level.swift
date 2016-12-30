@@ -8,8 +8,8 @@
 
 import Foundation
 
-let NumColumns = 9
-let NumRows = 9
+let NumColumns = 7
+let NumRows = 7
 
 class Level {
     var letters = Array2D<Letter>(columns: NumColumns, rows: NumRows)

@@ -14,7 +14,7 @@ enum LetterType: Int, CustomStringConvertible {
     // TODO: Instead of random, have a way of getting the right porportion depending on the letter,
     // this porportion will be in a dictionary. Calculated beforehand.
     static func random() -> LetterType {
-        return LetterType(rawValue: Int(arc4random_uniform(6)) + 1)!
+        return LetterType(rawValue: Int(arc4random_uniform(8)) + 1)!
     }
     
     var spriteName: String {

@@ -15,8 +15,9 @@ class GameScene: SKScene {
     
     var buffer: Int = 15
     
-    let TileWidth: CGFloat = 36.0
-    let TileHeight: CGFloat = 40.0
+    // change this to be porportional to the screen size
+    let TileWidth: CGFloat = 44.0
+    let TileHeight: CGFloat = 48.0
     
     let gameLayer = SKNode()
     let lettersLayer = SKNode()
@@ -60,7 +61,7 @@ class GameScene: SKScene {
     func pointFor(column: Int, row: Int) -> CGPoint {
         return CGPoint(
             x: CGFloat(column)*TileWidth + TileWidth/2,
-            y: CGFloat(row)*TileHeight + TileHeight/2)
+            y: CGFloat(row)*TileHeight + TileHeight/4)
     }
     
     func addTiles() {
