@@ -13,8 +13,10 @@ class GameScene: SKScene {
     
     var level: Level!
     
-    let TileWidth: CGFloat = 32.0
-    let TileHeight: CGFloat = 36.0
+    var buffer: Int = 15
+    
+    let TileWidth: CGFloat = 36.0
+    let TileHeight: CGFloat = 40.0
     
     let gameLayer = SKNode()
     let lettersLayer = SKNode()
@@ -39,8 +41,8 @@ class GameScene: SKScene {
             x: -TileWidth * CGFloat(NumColumns) / 2,
             y: -TileHeight * CGFloat(NumRows) / 2)
         
-        tilesLayer.position = layerPosition
-        gameLayer.addChild(tilesLayer)
+//        tilesLayer.position = layerPosition
+//        gameLayer.addChild(tilesLayer)
         lettersLayer.position = layerPosition
         gameLayer.addChild(lettersLayer)
     }
