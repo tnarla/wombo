@@ -39,9 +39,8 @@ class GameScene: SKScene {
             x: -TileWidth * CGFloat(NumColumns) / 2,
             y: -TileHeight * CGFloat(NumRows) / 2)
         
-//        tilesLayer.position = layerPosition
-//        tilesLayer.zPosition = -5
-//        gameLayer.addChild(tilesLayer)
+        tilesLayer.position = layerPosition
+        gameLayer.addChild(tilesLayer)
         lettersLayer.position = layerPosition
         gameLayer.addChild(lettersLayer)
     }
