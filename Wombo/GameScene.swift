@@ -13,7 +13,8 @@ class GameScene: SKScene {
     
     var level: Level!
     
-    var buffer: Int = 15
+    private var dragFromColumn =  [Int]()
+    private var dragFromRow = [Int]()
     
     // change this to be porportional to the screen size
     let TileWidth: CGFloat = 44.0
@@ -46,6 +47,8 @@ class GameScene: SKScene {
 //        gameLayer.addChild(tilesLayer)
         lettersLayer.position = layerPosition
         gameLayer.addChild(lettersLayer)
+        dragFromColumn = []
+        dragFromRow = []
     }
     
     func addSprites(for letters: Set<Letter>) {
@@ -64,6 +67,19 @@ class GameScene: SKScene {
             y: CGFloat(row)*TileHeight + TileHeight/4)
     }
     
+    /*
+     Input: CGPoint
+     Output: Coverts CGPoint into column and row numbers
+    */
+    func convertPoint(point: CGPoint) -> (success: Bool, column: Int, row: Int) {
+        if point.x >= 0 && point.x < CGFloat(NumColumns)*TileWidth &&
+            point.y >= 0 && point.y < CGFloat(NumRows)*TileHeight {
+            return (true, Int(point.x / TileWidth), Int(point.y / TileHeight))
+        } else {
+            return (false, 0, 0)  // invalid location
+        }
+    }
+    
     func addTiles() {
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
@@ -75,13 +91,58 @@ class GameScene: SKScene {
         }
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       /* Called when a touch begins */
+        // 1
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: lettersLayer)
+        // 2
+        let (success, column, row) = convertPoint(point: location)
+        if success {
+            dragFromColumn.append(column)
+            dragFromRow.append(row)
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard dragFromColumn != [] else {return}
         
-//        for touch in touches {
-//            let location = touch.locationInNode(self)
-//        }
+        guard let touch = touches.first else {return}
+        let location = touch.location(in: lettersLayer)
+        
+        let (success, column, row) = convertPoint(point: location)
+        
+        print(dragFromColumn.last!)
+        if success {
+            var horizDelta = 0, vertDelta = 0
+            
+            if dragFromColumn.last! < column && abs(dragFromColumn.last! - column) == 1{
+                horizDelta = 1
+            }
+            else if dragFromColumn.last! > column && abs(dragFromColumn.last! - column) == 1 {
+                horizDelta = -1
+            }
+            else if dragFromRow.last! < row && abs(dragFromRow.last! - row) == 1 {
+                vertDelta = 1
+            }
+            else if dragFromRow.last! > row && abs(dragFromRow.last! - row) == 1 {
+                vertDelta = -1
+            }
+            
+            print(column)
+            print(row)
+            
+        }
+        
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dragFromColumn = []
+        dragFromRow = []
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchesEnded(touches, with: event)
     }
    
     override func update(_ currentTime: TimeInterval) {
