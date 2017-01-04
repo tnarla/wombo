@@ -32,7 +32,7 @@ enum LetterType: Int, CustomStringConvertible {
     }
     
     var highlightedSpriteName: String {
-        return spriteName + "-Selected"
+        return spriteName + "-selected"
     }
     
     var description: String {

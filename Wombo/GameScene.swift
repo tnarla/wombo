@@ -24,10 +24,32 @@ class GameScene: SKScene {
     let lettersLayer = SKNode()
     let tilesLayer = SKNode()
     
+    var selectionSprite = SKSpriteNode()
+    
     override func didMove(to view: SKView) {
         self.backgroundColor = backgroundColorCustom
     }
     
+    func showSelectionIndicatorForLetter(letter: Letter) {
+        if selectionSprite.parent != nil {
+            selectionSprite.removeFromParent()
+        }
+        
+        if let sprite = letter.sprite {
+            let texture = SKTexture(imageNamed: letter.letterType.highlightedSpriteName)
+            selectionSprite.size = CGSize(width: TileWidth, height: TileHeight)
+            selectionSprite.run(SKAction.setTexture(texture))
+            
+            sprite.addChild(selectionSprite)
+            selectionSprite.alpha = 1.0
+        }
+    }
+    
+    func hideSelectionIndicator() {
+        selectionSprite.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 0.5),
+            SKAction.removeFromParent()]))
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -98,8 +120,11 @@ class GameScene: SKScene {
         // 2
         let (success, column, row) = convertPoint(point: location)
         if success {
-            dragFromColumn.append(column)
-            dragFromRow.append(row)
+            if let letter = level.letterAt(column, row: row) {
+                showSelectionIndicatorForLetter(letter: letter)
+                dragFromColumn.append(column)
+                dragFromRow.append(row)
+            }
         }
     }
     
@@ -111,25 +136,36 @@ class GameScene: SKScene {
         
         let (success, column, row) = convertPoint(point: location)
         
-        print(dragFromColumn.last!)
         if success {
             var horizDelta = 0, vertDelta = 0
             
-            if dragFromColumn.last! < column && abs(dragFromColumn.last! - column) == 1{
+            if dragFromColumn.last! < column && abs(dragFromColumn.last! - column) == 1 {
                 horizDelta = 1
-            }
-            else if dragFromColumn.last! > column && abs(dragFromColumn.last! - column) == 1 {
+            } else if dragFromColumn.last! > column && abs(dragFromColumn.last! - column) == 1 {
                 horizDelta = -1
             }
-            else if dragFromRow.last! < row && abs(dragFromRow.last! - row) == 1 {
+            
+            if dragFromRow.last! < row && abs(dragFromRow.last! - row) == 1 {
                 vertDelta = 1
-            }
-            else if dragFromRow.last! > row && abs(dragFromRow.last! - row) == 1 {
+            } else if dragFromRow.last! > row && abs(dragFromRow.last! - row) == 1 {
                 vertDelta = -1
             }
             
-            print(column)
-            print(row)
+            if horizDelta != 0 || vertDelta != 0 {
+                for var i in 0...dragFromColumn.count-1 {
+                    if dragFromColumn[i] == column && dragFromRow[i] == row {
+                        dragFromColumn.removeSubrange(i...dragFromColumn.count-1)
+                        dragFromRow.removeSubrange(i...dragFromRow.count-1)
+                        break
+                    }
+                    
+                    
+                }
+                if let letter = level.letterAt(column, row: row) {
+                    dragFromColumn.append(column)
+                    dragFromRow.append(row)
+                }
+            }
             
         }
         
@@ -137,6 +173,9 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(dragFromColumn)
+        print(dragFromRow)
+        hideSelectionIndicator()
         dragFromColumn = []
         dragFromRow = []
     }
