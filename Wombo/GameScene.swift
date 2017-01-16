@@ -158,23 +158,21 @@ class GameScene: SKScene {
                         dragFromRow.removeSubrange(i...dragFromRow.count-1)
                         break
                     }
-                    
-                    
                 }
-                if let letter = level.letterAt(column, row: row) {
+                if level.letterAt(column, row: row) != nil {
                     dragFromColumn.append(column)
                     dragFromRow.append(row)
                 }
             }
             
         }
-        
-        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print(dragFromColumn)
         print(dragFromRow)
+        
+        //print(level.letterAt(dragFromColumn[0], row: dragFromRow[0])!)
         hideSelectionIndicator()
         dragFromColumn = []
         dragFromRow = []
